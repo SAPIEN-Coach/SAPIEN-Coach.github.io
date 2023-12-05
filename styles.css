@@ -9,6 +9,10 @@ body {
     background-color: white;
 }
 
+img {
+    width: 250px;
+}
+
 #background {
     position: absolute;
     top: 0;
