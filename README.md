@@ -1,3 +1,3 @@
-# Sapien Coach Migration Notice Page
+# Sentien IO Migration Notice Page
 
-Deployed at <http://sapien.cloud>
+Deployed at <http://sentien.io>
