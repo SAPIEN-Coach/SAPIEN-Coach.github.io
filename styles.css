@@ -1,20 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,200;1,300&display=swap');
+@font-face {
+    font-family: "GeistRegular";
+    src: url("./fonts/Geist-Regular.otf");
+}
+
+@font-face {
+    font-family: "GeistBold";
+    src: url("./fonts/Geist-Bold.otf");
+}
+
+@font-face {
+    font-family: "GeistLight";
+    src: url("./fonts/Geist-Light.otf");
+}
 
 :root {
-    --background-box-color: rgba(255, 255, 255, .8)
+    --background-box-color: #dddddd;
+    --text-color: #222222;
+}
+
+* {
+    color: var(--text-color);
 }
 
 body {
     margin: 0;
-    background-color: white;
+    background-color: var(--background-box-color);
+    font-family: 'GeistRegular', sans-serif;
 }
 
 img {
     width: 250px;
 }
 
-.interest-form{
-    text-decoration: none;
+.interest-form {
+    width: fit-content;
+    height: fit-content;
+    padding: 1em 1.5em;
+    background-color: rgb(104, 104, 184);
+    color: white;
+    font-family: 'GeistLight';
+    box-shadow: 6px 6px 0px black;
+    transition: box-shadow 0.3s ease-in-out;
+    /* margin-left: 2em; */
+    margin-bottom: 1em;
+}
+.interest-form:hover {
+    box-shadow: 0 0 0 transparent;
 }
 
 #background {
@@ -23,15 +54,28 @@ img {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("sentien_landscape.png");
+    background-color: black;
+    /* background-image: url("sentien_landscape.png"); */
     background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#logo {
+    position: absolute;
+    top: calc(50% - (height/2));
+    right: 0;
+    height: 100%;
+    width: 40%;
+    background-image: url("sentien.png");
+    background-size: 400px;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
 #slantCover {
     position: absolute;
     top: 0;
-    left: -50%;
+    left: -40%;
     width: 100%;
     transform: skew(-20deg);
 }
@@ -71,7 +115,7 @@ img {
 }
 
 .third-width {
-    width: 30%;
+    width: 40%;
 }
 
 .background-box {
@@ -82,32 +126,28 @@ img {
     padding: 4%;
 }
 
-.text-left {
-    display: flex;
-    align-items: flex-start;
-    text-align: left;
-}
-
 h1 {
     text-align: left;
-    font-size: 5.5em;
+    font-size: 3.5em;
+    color: var(--text-color);
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-family: 'GeistBold';
+}
 
-    color: black;
+h2 {
+    font-weight: bold;
+    margin-bottom: .7em;
+    font-family: 'GeistBold';
+}
 
-    font-family: 'Exo 2', sans-serif;
-    /* color: aqua; */
-    /* text-shadow: 2px 2px 4px #000000; */
+p {
+    margin-top: 0;
+    font-family: 'GeistRegular';
 }
 
 .cursive {
     font-family: 'Kaushan Script', cursive;
-}
-
-.text-box {
-    margin: 0;
-    font-size: 1.5em;
-    text-align: left;
-    font-family: 'Exo 2', sans-serif;
 }
 
 #logo_img {
@@ -153,15 +193,86 @@ h1 {
     width: 94%;
 }
 
+.demo-row {
+    display: flex;
+}
+
+.demo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 5px;
+}
+
+.demo-item-stack {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 120px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.demo-item-stack .play-overlay {
+    position: absolute;
+    display: block;
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("./play.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: .9;
+    pointer-events: none;
+    filter: invert();
+}
+.demo-item a {
+    display: block;
+    color: red;
+    width: 100%;
+    height: 100%;
+}
+.demo-item p {
+    font-family: 'GeistRegular';
+    margin: 0;
+    margin-top: .5em;
+}
+
 @media (max-width: 767px) {
+    :root {
+        --logoHeight: 100px;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+    p {
+        font-size: 1.5em;
+    }
+
     #background {
         height: 100%;
         overflow: hidden;
     }
 
+    #logo {
+        top: 0;
+        left: 0;
+        width: var(--logoHeight);
+        height: var(--logoHeight);
+        background-size: contain;
+        margin: 1em;
+    }
+
     #slantCover {
         transform: none;
-        top: 30vh;
+        top: calc(var(--logoHeight) + 2em);
         left: 0;
         height: 70vh;
         width: 100vw;
@@ -169,14 +280,29 @@ h1 {
 
     #content {
         position: absolute;
-        top: 24vh;
+        top: calc(var(--logoHeight) + 3em);
         left: 0;
-        margin-left: 10%;
-        margin-top: 10%;
+        margin: 0;
+        width: 90%;
+        padding: 20px;
         height: fit-content;
+        font-size: .7em;
 
         flex-direction: column;
         justify-content: center;
+    }
+
+    .demo-row {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    .demo-item {
+        margin-bottom: 1em;
+    }
+    .demo-item-stack {
+        width: 100%;
+        height: 200px;
     }
 
     .highlight {
@@ -184,12 +310,13 @@ h1 {
         margin-left: 0;
     }
 
-    h1 {
-        font-size: 3.5em;
+    .third-width {
+        width: 100%;
     }
 
-    .text-box {
+    .interest-form {
+        /* width: 80%; */
+        text-align: center;
         font-size: 1.5em;
-        /* font-style: italic; */
     }
 }
